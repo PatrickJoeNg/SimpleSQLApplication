@@ -10,5 +10,6 @@ namespace PeopleAccountsLibrary.Data
     public interface IDataConnector
     {
         void CreatePerson(PersonModel model);
+        List<PersonModel> GetAllUsers();
     }
 }

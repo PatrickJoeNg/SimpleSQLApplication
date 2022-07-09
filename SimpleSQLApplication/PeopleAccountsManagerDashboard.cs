@@ -8,20 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PeopleAccountsLibrary;
+using PeopleAccountsLibrary.Models;
 
 namespace SimpleSQLApplication
 {
     public partial class PeopleAccountsManagerDashboard : Form
     {
+        List<PersonModel> availableUsers = GlobalConfig.DataConnection.GetAllUsers();
         public PeopleAccountsManagerDashboard()
         {
             InitializeComponent();
-           // WireUpDropDown();
+            WireUpDropDown();
         }
 
         private void WireUpDropDown()
         {
-            throw new NotImplementedException();
+            userNameDropDown.DataSource = availableUsers;
+            userNameDropDown.DisplayMember = "FullName";
         }
 
         private void createUserButton_Click(object sender, EventArgs e)

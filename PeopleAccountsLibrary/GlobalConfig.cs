@@ -17,6 +17,9 @@ namespace PeopleAccountsLibrary
         public string Password { get; set; }
 
         public static string ServerName = "127.0.01";
+        public static string DbName = "peopleaccounts";
+        public static string DbUser = "pat";
+        public static string DbPass = "123";
         public MySqlConnection MySqlConnector { get; set; }
 
         private static GlobalConfig _instance = null;
