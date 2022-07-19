@@ -15,6 +15,9 @@ namespace SimpleSQLApplication
         public ViewUserForm()
         {
             InitializeComponent();
+
+
+
         }
     }
 }

@@ -1,3 +1,5 @@
+using PeopleAccountsLibrary;
+
 namespace SimpleSQLApplication
 {
     internal static class Program
@@ -13,7 +15,7 @@ namespace SimpleSQLApplication
 
             ApplicationConfiguration.Initialize();
 
-            PeopleAccountsLibrary.GlobalConfig.InitializeDataConnection();
+            GlobalConfig.InitConnections();
 
             Application.Run(new PeopleAccountsManagerDashboard());
         }

@@ -14,16 +14,44 @@ namespace SimpleSQLApplication
 {
     public partial class PeopleAccountsManagerDashboard : Form
     {
-        List<PersonModel> availableUsers = GlobalConfig.DataConnection.GetAllUsers();
+        
+        BindingSource peopleBindingSource = new BindingSource();
+
         public PeopleAccountsManagerDashboard()
         {
             InitializeComponent();
             WireUpDropDown();
         }
+        private void CreateSampleData()
+        {
+            //PersonModel p = new PersonModel
+            //{
+            //    Id = 1,
+            //    FirstName = "Patrick",
+            //    LastName = "Ng",
+            //    EmailAddress = "png@gmail.com",
+            //    PhoneNumber = "333-444-1234"
+            //};
+            //PersonModel p2 = new PersonModel
+            //{
+            //    Id = 1,
+            //    FirstName = "John",
+            //    LastName = "Smith",
+            //    EmailAddress = "johnSmith@gmail.com",
+            //    PhoneNumber = "444-232-1209"
+            //};
+            //people.Add(p);
+            //people.Add(p2);
 
+            
+            //userNameDropDown.DisplayMember = "FullName";
+        }
         private void WireUpDropDown()
         {
-            userNameDropDown.DataSource = availableUsers;
+            List<PersonModel> people = GlobalConfig.Connection.GetAllUsers();
+
+            peopleBindingSource.DataSource = people;
+            userNameDropDown.DataSource = peopleBindingSource;
             userNameDropDown.DisplayMember = "FullName";
         }
 

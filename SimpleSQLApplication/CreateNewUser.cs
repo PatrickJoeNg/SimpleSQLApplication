@@ -30,7 +30,7 @@ namespace SimpleSQLApplication
                 p.EmailAddress = emailValue.Text;
                 p.PhoneNumber = phoneValue.Text;
 
-                GlobalConfig.DataConnection.CreatePerson(p);
+                //GlobalConfig.DataConnection.CreatePerson(p);
 
                 p.FirstName = "";
                 p.LastName = "";
