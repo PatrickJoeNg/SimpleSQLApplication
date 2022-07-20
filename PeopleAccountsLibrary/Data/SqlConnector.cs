@@ -13,7 +13,21 @@ namespace PeopleAccountsLibrary.Data
     {
         public void CreatePerson(PersonModel model)
         {
-           throw new NotImplementedException();
+           MySqlConnection dbConnection = new MySqlConnection(GlobalConfig.connectionString);
+            dbConnection.Open();
+
+            MySqlCommand command = new MySqlCommand();
+
+            command.CommandText = "INSERT INTO PEOPLE(FirstName,LastName,EmailAddress,PhoneNumber) VALUES(@firstName, @lastName, @emailAddress, @phoneNumber)";
+
+            command.Parameters.AddWithValue("@firstName", model.FirstName);
+            command.Parameters.AddWithValue("@lastName", model.LastName);
+            command.Parameters.AddWithValue("@emailAddress", model.EmailAddress);
+            command.Parameters.AddWithValue("@phoneNumber", model.PhoneNumber);
+            command.Connection = dbConnection;
+
+            command.ExecuteNonQuery();
+            dbConnection.Close();
         }
 
         public List<PersonModel> GetAllUsers()

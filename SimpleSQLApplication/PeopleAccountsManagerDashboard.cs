@@ -64,7 +64,9 @@ namespace SimpleSQLApplication
 
         private void viewUserButton_Click(object sender, EventArgs e)
         {
-            ViewUserForm frm = new ViewUserForm();
+            PersonModel pm = (PersonModel)userNameDropDown.SelectedItem;
+
+            ViewUserForm frm = new ViewUserForm(pm);
             frm.Show();
         }
     }

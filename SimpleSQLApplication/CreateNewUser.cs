@@ -21,6 +21,7 @@ namespace SimpleSQLApplication
 
         private void createNewUserButton_Click(object sender, EventArgs e)
         {
+            // TODO - Setup function to create a new user and add to database.
             if (ValidateForm())
             {
                 PersonModel p = new PersonModel();
@@ -30,7 +31,7 @@ namespace SimpleSQLApplication
                 p.EmailAddress = emailValue.Text;
                 p.PhoneNumber = phoneValue.Text;
 
-                //GlobalConfig.DataConnection.CreatePerson(p);
+                GlobalConfig.Connection.CreatePerson(p);
 
                 p.FirstName = "";
                 p.LastName = "";
