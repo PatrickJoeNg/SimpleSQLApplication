@@ -39,13 +39,14 @@ namespace SimpleSQLApplication
                 p.PhoneNumber = "";
 
                 this.Close();
+
             }
             else
             {
                 MessageBox.Show("Invalid form, please check and try again.");
             }
         }
-
+        
         private bool ValidateForm()
         {
             bool output = true;

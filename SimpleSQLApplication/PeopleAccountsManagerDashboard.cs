@@ -59,6 +59,10 @@ namespace SimpleSQLApplication
         {
             // Opens a new form for creating a user
             CreateNewUser frm = new CreateNewUser();
+
+            //Refreshes the form when closing creation.
+            frm.FormClosing += new FormClosingEventHandler(this.CreateNewUser_FormClosing);
+
             frm.Show();
         }
 
@@ -67,7 +71,13 @@ namespace SimpleSQLApplication
             PersonModel pm = (PersonModel)userNameDropDown.SelectedItem;
 
             ViewUserForm frm = new ViewUserForm(pm);
+
             frm.Show();
+        }
+
+        private void CreateNewUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WireUpDropDown();
         }
     }
 }
