@@ -61,7 +61,7 @@ namespace SimpleSQLApplication
             CreateNewUser frm = new CreateNewUser();
 
             //Refreshes the form when closing creation.
-            frm.FormClosing += new FormClosingEventHandler(this.CreateNewUser_FormClosing);
+            frm.FormClosing += new FormClosingEventHandler(CreateNewUser_FormClosing);
 
             frm.Show();
         }
