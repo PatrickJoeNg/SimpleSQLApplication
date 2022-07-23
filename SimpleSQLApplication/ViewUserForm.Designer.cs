@@ -35,6 +35,7 @@
             this.emailLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
+            this.companyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -100,7 +101,7 @@
             this.backButton.BackColor = System.Drawing.Color.DimGray;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.backButton.Location = new System.Drawing.Point(182, 353);
+            this.backButton.Location = new System.Drawing.Point(173, 401);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(165, 69);
             this.backButton.TabIndex = 6;
@@ -108,12 +109,23 @@
             this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
+            // companyLabel
+            // 
+            this.companyLabel.AutoSize = true;
+            this.companyLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.companyLabel.Location = new System.Drawing.Point(192, 328);
+            this.companyLabel.Name = "companyLabel";
+            this.companyLabel.Size = new System.Drawing.Size(131, 37);
+            this.companyLabel.TabIndex = 7;
+            this.companyLabel.Text = "Company";
+            // 
             // ViewUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(528, 461);
+            this.ClientSize = new System.Drawing.Size(528, 516);
+            this.Controls.Add(this.companyLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.emailLabel);
@@ -140,5 +152,6 @@
         private Label emailLabel;
         private Label phoneLabel;
         private Button backButton;
+        private Label companyLabel;
     }
 }

@@ -11,5 +11,6 @@ namespace PeopleAccountsLibrary.Data
     {
         void CreatePerson(PersonModel model);
         List<PersonModel> GetAllUsers();
+        List<CompanyModel> GetAllCompanies();
     }
 }

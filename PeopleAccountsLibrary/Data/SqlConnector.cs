@@ -59,5 +59,36 @@ namespace PeopleAccountsLibrary.Data
             dbConnection.Close();
             return models;
         }
+
+        public List<CompanyModel> GetAllCompanies()
+        {
+            // new list
+            List<CompanyModel> models = new List<CompanyModel>();
+
+            // Connect to the sql server
+            MySqlConnection dbConnection = new MySqlConnection(GlobalConfig.connectionString);
+            dbConnection.Open();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM COMPANIES", dbConnection);
+
+            using(MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    CompanyModel c = new CompanyModel
+                    {
+                        Id=reader.GetInt32(0),
+                        CompanyName = reader.GetString(1),
+                        StreetAddress = reader.GetString(2),
+                        City = reader.GetString(3),
+                        PostalCode = reader.GetString(4),
+                        PhoneNumber = reader.GetString(5)
+                    };
+                    models.Add(c);
+                }
+            }
+            dbConnection.Close();
+            return models;
+        }
     }
 }

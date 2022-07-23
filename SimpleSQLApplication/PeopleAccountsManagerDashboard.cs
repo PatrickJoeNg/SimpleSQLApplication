@@ -16,6 +16,7 @@ namespace SimpleSQLApplication
     {
         
         BindingSource peopleBindingSource = new BindingSource();
+        BindingSource companiesBindingSource = new BindingSource();
 
         public PeopleAccountsManagerDashboard()
         {
@@ -48,11 +49,21 @@ namespace SimpleSQLApplication
         }
         private void WireUpDropDown()
         {
+            // People
+           
             List<PersonModel> people = GlobalConfig.Connection.GetAllUsers();
 
             peopleBindingSource.DataSource = people;
             userNameDropDown.DataSource = peopleBindingSource;
             userNameDropDown.DisplayMember = "FullName";
+
+            // Companies 
+
+            List<CompanyModel> companies = GlobalConfig.Connection.GetAllCompanies();
+
+            companiesBindingSource.DataSource = companies;
+            companyNameDropDown.DataSource = companiesBindingSource;
+            companyNameDropDown.DisplayMember = "CompanyName";
         }
 
         private void createUserButton_Click(object sender, EventArgs e)
