@@ -18,12 +18,13 @@ namespace PeopleAccountsLibrary.Data
 
             MySqlCommand command = new MySqlCommand();
 
-            command.CommandText = "INSERT INTO PEOPLE(FirstName,LastName,EmailAddress,PhoneNumber) VALUES(@firstName, @lastName, @emailAddress, @phoneNumber)";
+            command.CommandText = "INSERT INTO PEOPLE(FirstName,LastName,EmailAddress,PhoneNumber,CompanyId) VALUES(@firstName, @lastName, @emailAddress, @phoneNumber, @companyId)";
 
             command.Parameters.AddWithValue("@firstName", model.FirstName);
             command.Parameters.AddWithValue("@lastName", model.LastName);
             command.Parameters.AddWithValue("@emailAddress", model.EmailAddress);
             command.Parameters.AddWithValue("@phoneNumber", model.PhoneNumber);
+            command.Parameters.AddWithValue("@companyId", model.CompanyId);
             command.Connection = dbConnection;
 
             command.ExecuteNonQuery();
@@ -45,15 +46,31 @@ namespace PeopleAccountsLibrary.Data
             {
                 while (reader.Read())
                 {
-                    PersonModel p = new PersonModel
+                    if (reader.IsDBNull(5))
                     {
-                        Id = reader.GetInt32(0),
-                        FirstName = reader.GetString(1),
-                        LastName = reader.GetString(2),
-                        EmailAddress = reader.GetString(3),
-                        PhoneNumber = reader.GetString(4)
-                    };
-                    models.Add(p);
+                        PersonModel p = new PersonModel
+                        {
+                            Id = reader.GetInt32(0),
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            EmailAddress = reader.GetString(3),
+                            PhoneNumber = reader.GetString(4)
+                        };
+                        models.Add(p);
+                    }
+                    else if (!reader.IsDBNull(5))
+                    {
+                        PersonModel p = new PersonModel
+                        {
+                            Id = reader.GetInt32(0),
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            EmailAddress = reader.GetString(3),
+                            PhoneNumber = reader.GetString(4),
+                            CompanyId = reader.GetInt32(5)
+                        };
+                        models.Add(p);
+                    } 
                 }
             }
             dbConnection.Close();

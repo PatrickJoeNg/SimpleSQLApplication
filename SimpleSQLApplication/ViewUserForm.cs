@@ -1,4 +1,5 @@
-﻿using PeopleAccountsLibrary.Models;
+﻿using PeopleAccountsLibrary;
+using PeopleAccountsLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace SimpleSQLApplication
     public partial class ViewUserForm : Form
     {
         private PersonModel person;
+        private List<CompanyModel> companies = GlobalConfig.Connection.GetAllCompanies();
 
         public ViewUserForm(PersonModel personModel)
         {
@@ -30,6 +32,15 @@ namespace SimpleSQLApplication
             lastNameLabel.Text = person.LastName;
             emailLabel.Text = person.EmailAddress;
             phoneLabel.Text = person.PhoneNumber;
+            if (person.CompanyId != null)
+            {
+                // linq to find company that user is a part of
+                companyLabel.Text = companies.Where(x => x.Id == person.CompanyId).First().CompanyName;
+            }
+            else
+            {
+                companyLabel.Text = "<Unemployed>";
+            }
         }
 
         private void backButton_Click(object sender, EventArgs e)

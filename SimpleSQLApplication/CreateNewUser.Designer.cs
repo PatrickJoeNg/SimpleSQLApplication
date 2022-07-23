@@ -30,6 +30,8 @@
         {
             this.headerLabel = new System.Windows.Forms.Label();
             this.newUserGroupBox = new System.Windows.Forms.GroupBox();
+            this.companyNameDropDown = new System.Windows.Forms.ComboBox();
+            this.companyLabel = new System.Windows.Forms.Label();
             this.phoneValue = new System.Windows.Forms.TextBox();
             this.emailValue = new System.Windows.Forms.TextBox();
             this.lastNameValue = new System.Windows.Forms.TextBox();
@@ -54,6 +56,8 @@
             // 
             // newUserGroupBox
             // 
+            this.newUserGroupBox.Controls.Add(this.companyNameDropDown);
+            this.newUserGroupBox.Controls.Add(this.companyLabel);
             this.newUserGroupBox.Controls.Add(this.phoneValue);
             this.newUserGroupBox.Controls.Add(this.emailValue);
             this.newUserGroupBox.Controls.Add(this.lastNameValue);
@@ -64,10 +68,29 @@
             this.newUserGroupBox.Controls.Add(this.firstNameLabel);
             this.newUserGroupBox.Location = new System.Drawing.Point(35, 125);
             this.newUserGroupBox.Name = "newUserGroupBox";
-            this.newUserGroupBox.Size = new System.Drawing.Size(544, 310);
+            this.newUserGroupBox.Size = new System.Drawing.Size(544, 339);
             this.newUserGroupBox.TabIndex = 1;
             this.newUserGroupBox.TabStop = false;
             this.newUserGroupBox.Text = "User Info";
+            // 
+            // companyNameDropDown
+            // 
+            this.companyNameDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.companyNameDropDown.FormattingEnabled = true;
+            this.companyNameDropDown.Location = new System.Drawing.Point(230, 281);
+            this.companyNameDropDown.Name = "companyNameDropDown";
+            this.companyNameDropDown.Size = new System.Drawing.Size(286, 38);
+            this.companyNameDropDown.TabIndex = 3;
+            // 
+            // companyLabel
+            // 
+            this.companyLabel.AutoSize = true;
+            this.companyLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.companyLabel.Location = new System.Drawing.Point(6, 278);
+            this.companyLabel.Name = "companyLabel";
+            this.companyLabel.Size = new System.Drawing.Size(137, 37);
+            this.companyLabel.TabIndex = 11;
+            this.companyLabel.Text = "Company:";
             // 
             // phoneValue
             // 
@@ -142,7 +165,7 @@
             this.createNewUserButton.BackColor = System.Drawing.Color.DimGray;
             this.createNewUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createNewUserButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.createNewUserButton.Location = new System.Drawing.Point(225, 451);
+            this.createNewUserButton.Location = new System.Drawing.Point(221, 485);
             this.createNewUserButton.Name = "createNewUserButton";
             this.createNewUserButton.Size = new System.Drawing.Size(165, 80);
             this.createNewUserButton.TabIndex = 2;
@@ -156,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(614, 552);
+            this.ClientSize = new System.Drawing.Size(614, 603);
             this.Controls.Add(this.createNewUserButton);
             this.Controls.Add(this.newUserGroupBox);
             this.Controls.Add(this.headerLabel);
@@ -185,5 +208,7 @@
         private Label phoneLabel;
         private Label firstNameLabel;
         private Button createNewUserButton;
+        private Label companyLabel;
+        private ComboBox companyNameDropDown;
     }
 }

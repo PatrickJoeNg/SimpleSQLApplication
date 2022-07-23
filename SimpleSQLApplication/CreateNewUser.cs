@@ -14,14 +14,22 @@ namespace SimpleSQLApplication
 {
     public partial class CreateNewUser : Form
     {
+        List<CompanyModel> companies = GlobalConfig.Connection.GetAllCompanies();
         public CreateNewUser()
         {
             InitializeComponent();
+            WireUpCompanyDropDown();
+        }
+
+        private void WireUpCompanyDropDown()
+        {
+            companyNameDropDown.DataSource = companies;
+            companyNameDropDown.DisplayMember = "CompanyName";
+            companyNameDropDown.SelectedItem = null;
         }
 
         private void createNewUserButton_Click(object sender, EventArgs e)
         {
-            // TODO - Setup function to create a new user and add to database.
             if (ValidateForm())
             {
                 PersonModel p = new PersonModel();
@@ -31,6 +39,17 @@ namespace SimpleSQLApplication
                 p.EmailAddress = emailValue.Text;
                 p.PhoneNumber = phoneValue.Text;
 
+                CompanyModel c = (CompanyModel)companyNameDropDown.SelectedItem;
+                if (c == null)
+                {
+                    p.CompanyId = null;
+                }
+                else
+                {
+                    
+                    p.CompanyId = c.Id;
+                }
+                
                 GlobalConfig.Connection.CreatePerson(p);
 
                 p.FirstName = "";

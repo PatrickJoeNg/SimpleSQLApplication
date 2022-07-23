@@ -15,7 +15,7 @@ namespace PeopleAccountsLibrary.Models
         public string PhoneNumber { get; set; }
 
         // Adding CompanyId from Company Model
-        public int CompanyId { get; set; }
+        public int? CompanyId { get; set; }
         public string FullName
         {
             get
